@@ -36,7 +36,6 @@ Just install the application and open it and select the drive and Press START. T
 
 The output file will be generated in the root of the same drive selected above
 
-https://www.youtube.com/watch?v=7MElJ5Y0lEQ
 
 Compatibility:
 
