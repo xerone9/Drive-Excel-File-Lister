@@ -26,7 +26,7 @@ Hyperlinks might not work for low end and will take 3x more time then regular ti
 
 Working:
 
-[![Alt text](https://img.youtube.com/vi/zQ7-47OSvmo/0.jpg)](https://www.youtube.com/watch?v=zQ7-47OSvmo)
+[![Alt text](https://github.com/xerone9/Drive-Excel-File-Lister/blob/main/Drive-Lister.jpg)](https://www.youtube.com/watch?v=zQ7-47OSvmo)
 
 _Click On Picture To See Video_
 
