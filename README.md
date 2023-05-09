@@ -41,3 +41,7 @@ Requires Microsoft Office 2010 or any Excel File Reader as the output file will 
 
 
 Password: softwares.rubick.org
+
+Changelog 2.1:
+
+All drives options Added _but requires admin rights prior running application_
