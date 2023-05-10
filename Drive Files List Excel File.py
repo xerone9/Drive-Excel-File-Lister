@@ -13,6 +13,100 @@ def main():
     def callback(url):
         webbrowser.open_new(url)
 
+    def headers(sheet):
+        thin_border = Border(left=Side(style='thin'),
+                             right=Side(style='thin'),
+                             top=Side(style='thin'),
+                             bottom=Side(style='thin'))
+
+        center = Alignment(horizontal='center', vertical='center')
+        titleColor = PatternFill(start_color='000000',
+                                 end_color='000000',
+                                 fill_type='solid')
+        headingColor = PatternFill(start_color='808080',
+                                   end_color='808080',
+                                   fill_type='solid')
+
+        titleFont = Font(color="00FF00", size=20)
+
+        cell = sheet.cell(1, 1)
+        cell.value = "For PC/Excel Automation - softwares.rubick.org"
+        cell.hyperlink = "https://softwares.rubick.org/"
+
+        sheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=7)
+        cell.fill = titleColor
+        cell.font = titleFont
+        cell.alignment = center
+        cell = sheet.cell(2, 1)
+        cell.value = "S.No"
+        cell.alignment = center
+        cell.font = Font(bold=True)
+        cell.fill = headingColor
+        cell.border = thin_border
+        cell = sheet.cell(2, 2)
+        cell.value = "File Names"
+        cell.alignment = center
+        cell.font = Font(bold=True)
+        cell.fill = headingColor
+        cell.border = thin_border
+        cell = sheet.cell(2, 3)
+        cell.value = "File Type"
+        cell.alignment = center
+        cell.font = Font(bold=True)
+        cell.fill = headingColor
+        cell.border = thin_border
+        cell = sheet.cell(2, 4)
+        cell.value = "File Size (Mbs)"
+        cell.alignment = center
+        cell.font = Font(bold=True)
+        cell.fill = headingColor
+        cell.border = thin_border
+        cell = sheet.cell(2, 5)
+        cell.value = "File Modified"
+        cell.alignment = center
+        cell.font = Font(bold=True)
+        cell.fill = headingColor
+        cell.border = thin_border
+        cell = sheet.cell(2, 6)
+        cell.value = "File Created"
+        cell.alignment = center
+        cell.font = Font(bold=True)
+        cell.fill = headingColor
+        cell.border = thin_border
+        cell = sheet.cell(2, 7)
+        cell.value = "Location"
+        cell.alignment = center
+        cell.font = Font(bold=True)
+        cell.fill = headingColor
+
+    def footers(sheet, ws):
+        center = Alignment(horizontal='center', vertical='center')
+        titleColor = PatternFill(start_color='000000',
+                                 end_color='000000',
+                                 fill_type='solid')
+
+        titleFont = Font(color="00FF00", size=20)
+
+        cell = sheet.cell(sheet.max_row + 1, 1)
+        cell.value = "For PC/Excel Automation - softwares.rubick.org"
+        cell.hyperlink = "https://softwares.rubick.org/"
+        lastRow = cell.row
+        sheet.merge_cells(start_row=lastRow, start_column=1, end_row=lastRow, end_column=7)
+        cell.fill = titleColor
+        cell.font = titleFont
+        cell.alignment = center
+
+        dim_holder = DimensionHolder(worksheet=ws)
+
+        dim_holder[get_column_letter(1)] = ColumnDimension(ws, min=1, max=1, width=8)
+        dim_holder[get_column_letter(2)] = ColumnDimension(ws, min=2, max=2, width=40)
+        dim_holder[get_column_letter(3)] = ColumnDimension(ws, min=3, max=3, width=8)
+        dim_holder[get_column_letter(4)] = ColumnDimension(ws, min=4, max=4, width=12)
+        dim_holder[get_column_letter(5)] = ColumnDimension(ws, min=5, max=5, width=30)
+        dim_holder[get_column_letter(6)] = ColumnDimension(ws, min=6, max=6, width=30)
+        dim_holder[get_column_letter(7)] = ColumnDimension(ws, min=7, max=7, width=175)
+
+        ws.column_dimensions = dim_holder
 
     def changeColor():
         checkBoxState = str(var.get())
@@ -48,8 +142,7 @@ def main():
 
             wb = xl.Workbook()
             wb.save(saveLocation)
-
-            sheet = wb.create_sheet("List Of Files")
+            wb.create_sheet("List Of Files")
             ws = wb['List Of Files']
             del wb['Sheet']
             sheet = wb['List Of Files']
@@ -70,164 +163,104 @@ def main():
                                  top=Side(style='thin'),
                                  bottom=Side(style='thin'))
 
-            center = Alignment(horizontal='center', vertical='center')
-            titleColor = PatternFill(start_color='000000',
-                                  end_color='000000',
-                                  fill_type='solid')
-            headingColor = PatternFill(start_color='808080',
-                                  end_color='808080',
-                                  fill_type='solid')
             resultsColor = PatternFill(start_color='FFFFFF',
                                   end_color='FFFFFF',
                                   fill_type='solid')
             locationColor = PatternFill(start_color='00FFFF',
                                   end_color='00FFFF',
                                   fill_type='solid')
-            deletionColor = PatternFill(start_color='ff0000',
-                                        end_color='ff0000',
-                                        fill_type='solid')
 
-            titleFont = Font(color="00FF00", size=20)
-
-            cell = sheet.cell(1, 1)
-            cell.value = "For PC/Excel Automation - softwares.rubick.org"
-            cell.hyperlink = "https://softwares.rubick.org/"
-
-            sheet.merge_cells(start_row=1, start_column=1, end_row=1, end_column=7)
-            cell.fill = titleColor
-            cell.font = titleFont
-            cell.alignment = center
-            cell = sheet.cell(2, 1)
-            cell.value = "S.No"
-            cell.alignment = center
-            cell.font = Font(bold=True)
-            cell.fill = headingColor
-            cell.border = thin_border
-            cell = sheet.cell(2, 2)
-            cell.value = "File Names"
-            cell.alignment = center
-            cell.font = Font(bold=True)
-            cell.fill = headingColor
-            cell.border = thin_border
-            cell = sheet.cell(2, 3)
-            cell.value = "File Type"
-            cell.alignment = center
-            cell.font = Font(bold=True)
-            cell.fill = headingColor
-            cell.border = thin_border
-            cell = sheet.cell(2, 4)
-            cell.value = "File Size (Mbs)"
-            cell.alignment = center
-            cell.font = Font(bold=True)
-            cell.fill = headingColor
-            cell.border = thin_border
-            cell = sheet.cell(2, 5)
-            cell.value = "File Modified"
-            cell.alignment = center
-            cell.font = Font(bold=True)
-            cell.fill = headingColor
-            cell.border = thin_border
-            cell = sheet.cell(2, 6)
-            cell.value = "File Created"
-            cell.alignment = center
-            cell.font = Font(bold=True)
-            cell.fill = headingColor
-            cell.border = thin_border
-            cell = sheet.cell(2, 7)
-            cell.value = "Location"
-            cell.alignment = center
-            cell.font = Font(bold=True)
-            cell.fill = headingColor
-
-            Serial = 2
+            sheet_counter = 1
+            sheet_serial = 1
+            Serial = 0
             for Drive in drive_or_drives:
                 for subdir, dirs, files in os.walk(Drive):
                     for file in (files):
                         filepath = subdir + os.sep + file
-                        if filepath.__contains__("$RECYCLE.BIN"):
-                            pass
+                        if sheet_serial == 1_048_575:
+                            footers(sheet, ws)
+                            sheet_serial = 1
+                            sheet_counter += 1
+                            if sheet_counter == 1:
+                                wb.create_sheet("List Of Files")
+                                ws = wb['List Of Files']
+                                sheet = wb['List Of Files']
+                                wb.save(saveLocation)
+                            else:
+                                wb.create_sheet("List Of Files (" + str(sheet_counter) + ")")
+                                ws = wb["List Of Files (" + str(sheet_counter) + ")"]
+                                sheet = wb["List Of Files (" + str(sheet_counter) + ")"]
+                                wb.save(saveLocation)
+                        if sheet_serial == 1:
+                            headers(sheet)
+                            sheet_serial = 2
                         else:
-                            print(f"{file} - {filepath}")
-                            Serial += 1
-                            cell = sheet.cell(Serial, 1)
-                            cell.value = Serial - 2
-                            cell.fill = resultsColor
-                            cell.border = thin_border
-                            cell = sheet.cell(Serial, 2)
-                            cell.value = file
-                            fileTypes = os.path.splitext(file)[1]
-                            cell.fill = resultsColor
-                            cell.border = thin_border
-                            cell = sheet.cell(Serial, 3)
-                            fileType = pointRemover(fileTypes)
-                            cell.value = fileType
-                            cell.fill = resultsColor
-                            cell.border = thin_border
-                            cell = sheet.cell(Serial, 4)
-                            try:
-                                size = os.path.getsize(filepath)
-                                cell.fill = resultsColor
-                                cell.border = thin_border
-                                excelFile = str(file)
-                                if excelFile.__contains__("Drive (List Of All Files).xlsx"):
-                                    cell.value = ""
-                                else:
-                                    sizeMB = float(size / 1000000)
-                                    mb_Points_Control = round(sizeMB, 2)
-                                    cell.value = mb_Points_Control
-                            except FileNotFoundError:
-                                cell.fill = resultsColor
-                                cell.border = thin_border
+                            if filepath.__contains__("$RECYCLE.BIN"):
                                 pass
-                            cell = sheet.cell(Serial, 5)
-                            try:
-                                dateModified = time.ctime(os.path.getmtime(filepath))
-                                cell.value = dateModified
+                            else:
+                                print(f"{file} - {filepath}")
+                                Serial += 1
+                                sheet_serial += 1
+                                cell = sheet.cell(sheet_serial, 1)
+                                cell.value = Serial - 2
                                 cell.fill = resultsColor
                                 cell.border = thin_border
-                            except FileNotFoundError:
+                                cell = sheet.cell(sheet_serial, 2)
+                                cell.value = file
+                                fileTypes = os.path.splitext(file)[1]
                                 cell.fill = resultsColor
                                 cell.border = thin_border
-                            cell.fill = resultsColor
-                            cell.border = thin_border
-                            cell = sheet.cell(Serial, 6)
-                            try:
-                                dateCreated = time.ctime(os.path.getctime(filepath))
-                                cell.value = dateCreated
+                                cell = sheet.cell(sheet_serial, 3)
+                                fileType = pointRemover(fileTypes)
+                                cell.value = fileType
                                 cell.fill = resultsColor
                                 cell.border = thin_border
-                            except FileNotFoundError:
+                                cell = sheet.cell(sheet_serial, 4)
+                                try:
+                                    size = os.path.getsize(filepath)
+                                    cell.fill = resultsColor
+                                    cell.border = thin_border
+                                    excelFile = str(file)
+                                    if excelFile.__contains__("Drive (List Of All Files).xlsx"):
+                                        cell.value = ""
+                                    else:
+                                        sizeMB = float(size / 1000000)
+                                        mb_Points_Control = round(sizeMB, 2)
+                                        cell.value = mb_Points_Control
+                                except FileNotFoundError:
+                                    cell.fill = resultsColor
+                                    cell.border = thin_border
+                                    pass
+                                cell = sheet.cell(sheet_serial, 5)
+                                try:
+                                    dateModified = time.ctime(os.path.getmtime(filepath))
+                                    cell.value = dateModified
+                                    cell.fill = resultsColor
+                                    cell.border = thin_border
+                                except FileNotFoundError:
+                                    cell.fill = resultsColor
+                                    cell.border = thin_border
                                 cell.fill = resultsColor
                                 cell.border = thin_border
-                            cell = sheet.cell(Serial, 7)
-                            cell.value = filepath
-                            cell.fill = locationColor
-                            cell.border = thin_border
-                            if checkBoxState == "1":
-                                cell.hyperlink = "\\\\" + filepath
-                                cell.style = "Hyperlink"
+                                cell = sheet.cell(sheet_serial, 6)
+                                try:
+                                    dateCreated = time.ctime(os.path.getctime(filepath))
+                                    cell.value = dateCreated
+                                    cell.fill = resultsColor
+                                    cell.border = thin_border
+                                except FileNotFoundError:
+                                    cell.fill = resultsColor
+                                    cell.border = thin_border
+                                cell = sheet.cell(sheet_serial, 7)
+                                cell.value = filepath
+                                cell.fill = locationColor
                                 cell.border = thin_border
+                                if checkBoxState == "1":
+                                    cell.hyperlink = "\\\\" + filepath
+                                    cell.style = "Hyperlink"
+                                    cell.border = thin_border
 
-            cell = sheet.cell(sheet.max_row + 1, 1)
-            cell.value = "For PC/Excel Automation - softwares.rubick.org"
-            cell.hyperlink = "https://softwares.rubick.org/"
-            lastRow = cell.row
-            sheet.merge_cells(start_row=lastRow, start_column=1, end_row=lastRow, end_column=7)
-            cell.fill = titleColor
-            cell.font = titleFont
-            cell.alignment = center
-
-            dim_holder = DimensionHolder(worksheet=ws)
-
-            dim_holder[get_column_letter(1)] = ColumnDimension(ws, min=1, max=1, width=6)
-            dim_holder[get_column_letter(2)] = ColumnDimension(ws, min=2, max=2, width=40)
-            dim_holder[get_column_letter(3)] = ColumnDimension(ws, min=3, max=3, width=8)
-            dim_holder[get_column_letter(3)] = ColumnDimension(ws, min=4, max=4, width=18)
-            dim_holder[get_column_letter(3)] = ColumnDimension(ws, min=5, max=5, width=38)
-            dim_holder[get_column_letter(3)] = ColumnDimension(ws, min=6, max=6, width=38)
-            dim_holder[get_column_letter(4)] = ColumnDimension(ws, min=7, max=7, width=175)
-
-            ws.column_dimensions = dim_holder
+            footers(sheet, ws)
             wb.save(saveLocation)
             os.startfile(saveLocation)
         except PermissionError:
