@@ -276,8 +276,8 @@ def main():
 
     root = Tk()
     root.resizable(0,0)
-    root.iconbitmap('icon.ico')
-    root.title('Drive File Lister - V-2.1')
+    # root.iconbitmap('icon.ico')
+    root.title('Drive File Lister - V-2.2')
     # root.geometry("300x285")
     root.geometry("320x260")
     root.configure(bg="white")
